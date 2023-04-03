@@ -45,9 +45,12 @@ X_centered = X
 
 # Run PCA with 2 dimensions
 X_pca, params, X_reconstructed , singular_values = pca(X_centered, 1)
-#s_log = np.log(singular_values)
-#plt.grid(alpha=0
-#plt.plot(s_log)
+
+X_reconstruction_error = np.square(np.linalg.norm(X_centered-X_reconstructed))
+X_reconstruction_error = X_reconstruction_error/X_centered.shape[0]
+
+print("Reconstruction Error | Buggy PCA : ", X_reconstruction_error)
+
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.title("Buggy PCA")
